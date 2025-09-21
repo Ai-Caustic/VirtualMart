@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Top Tips for Buying a Used Car",
+    "excerpt": "Looking to buy a second-hand vehicle? Here are the most important things to check before making your purchase...",
+    "content": "Buying a used car can save you a lot of money, but it comes with risks. Always check the vehicle history, service records, and get a trusted mechanic to inspect the car. Pay close attention to mileage, accident reports, and ensure ownership documents are in order before making a decision.",
+    "image": "../images/blog-img1.png",
+    "date": "2025-06-01",
+    "author": "John Doe",
+    "tags": ["Used Cars", "Buying Guide", "Tips"]
+  },
+  {
+    "id": 2,
+    "title": "The Rise of Electric Vehicles",
+    "excerpt": "Electric cars are transforming the automotive industry. Find out why more drivers are making the switch...",
+    "content": "Electric vehicles (EVs) are becoming increasingly popular due to lower running costs, environmental benefits, and government incentives. With rapid improvements in battery technology and charging infrastructure, EVs are no longer a futuristic idea—they are the present and the future.",
+    "image": "../images/blog-img2.png",
+    "date": "2025-06-05",
+    "author": "Jane Smith",
+    "tags": ["EV", "Sustainability", "Future Cars"]
+  },
+  {
+    "id": 3,
+    "title": "Car Maintenance Hacks",
+    "excerpt": "From oil changes to tire care — these simple hacks can extend the life of your car and save you money...",
+    "content": "Regular maintenance is key to keeping your car running smoothly. Change your oil on time, rotate your tires, and check fluid levels regularly. Using simple DIY hacks like baking soda for cleaning or vinegar for window shine can also save you time and money.",
+    "image": "../images/blog-img3.png",
+    "date": "2025-06-10",
+    "author": "Mike Johnson",
+    "tags": ["Maintenance", "DIY", "Car Care"]
+  }
+]

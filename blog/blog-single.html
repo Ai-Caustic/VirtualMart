@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Mart - Blog Details</title>
+
+    <!-- Bootstrap + Oberlo CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../css/mart.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    <span class=""></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">About</a></li>
+                        <li class="nav-item"><a class="nav-link navbar-brand" href="../virtual-mart/index.html">
+                                <span><span>Virtual</span>Mart</span>
+                            </a></li>
+                        <li class="nav-item active"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../contact/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- blog banner -->
+    <div class="banner_section layout_padding">
+        <div class="container">
+            <h1 id="blog-title" class="banner_taital text-center">Blog Post</h1>
+            <p id="blog-subtitle" class="banner_text text-center"></p>
+        </div>
+    </div>
+
+    <!-- blog content -->
+    <div class="blog_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog_detail_box">
+                        <div class="blog_img mb-4">
+                            <img id="blog-image" src="" alt="Blog Image" class="img-fluid rounded shadow">
+                        </div>
+                        <h2 id="blog-heading" class="blog_text mb-3"></h2>
+                        <p id="blog-meta" class="text-muted small mb-4"></p>
+                        <div id="blog-content" class="lorem_text"></div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4 col-md-12">
+                    <div class="sidebar_box">
+                        <h4 class="mb-3">Recent Posts</h4>
+                        <ul id="recent-posts" class="list-unstyled"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="copyright_section">
+        <div class="container text-center">
+            <p class="copyright_text">
+                2025 &copy; All Rights Reserved. Design by Victor Micheni
+            </p>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/plugin.js"></script>
+    <script src="../js/custom.js"></script>
+
+    <!-- Blog JSON Loader -->
+    <script>
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        fetch("blogs.json")
+            .then(response => response.json())
+            .then(data => {
+                const blogId = parseInt(getQueryParam("id"));
+                const blog = data.find(post => post.id === blogId);
+
+                if (blog) {
+                    document.title = blog.title + " - Virtual Mart";
+                    document.getElementById("blog-title").textContent = blog.title;
+                    document.getElementById("blog-subtitle").textContent = blog.excerpt;
+                    document.getElementById("blog-image").src = blog.image;
+                    document.getElementById("blog-heading").textContent = blog.title;
+                    document.getElementById("blog-meta").textContent = `By Admin | ${blog.date}`;
+                    document.getElementById("blog-content").innerHTML = blog.content;
+                }
+
+                // Recent posts (except current)
+                const recentPosts = document.getElementById("recent-posts");
+                data.filter(post => post.id !== blogId).slice(0, 3).forEach(post => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<a href="blog-single.html?id=${post.id}">${post.title}</a>`;
+                    recentPosts.appendChild(li);
+                });
+            })
+            .catch(error => console.error("Error loading blog:", error));
+    </script>
+</body>
+
+</html>

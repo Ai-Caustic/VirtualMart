@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Virtual Mart - Contact</title>
+
+    <!-- Bootstrap + Oberlo CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../css/mart.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <!-- header -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    <span class=""></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">About</a></li>
+                        <li class="nav-item"><a class="nav-link navbar-brand"
+                                href="../virtual-mart/index.html"><span><span>Virtual</span>Mart</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../blog/blog.html">Blog</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- contact banner -->
+    <div class="banner_section layout_padding">
+        <div class="container text-center">
+            <h1 class="banner_taital">Contact Us</h1>
+            <p class="banner_text">Have questions or need assistance? Fill out the form below and we'll get back to you
+                as soon as possible.</p>
+        </div>
+    </div>
+
+    <!-- contact form section -->
+    <div class="contact_section layout_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact_form">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" class="form-control" rows="5"
+                                    placeholder="Your Message"></textarea>
+                            </div>
+                            <div id="formMessage" class="mb-3 text-center"></div>
+                            <div class="btn_main text-center">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- contact info row -->
+            <div class="row text-center mt-5">
+                <div class="col-md-4">
+                    <i class="fa fa-map-marker fa-2x mb-2"></i>
+                    <p>123 Nairobi St, Nairobi, Kenya</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa fa-phone fa-2x mb-2"></i>
+                    <p>+254 700 000000</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fa fa-envelope fa-2x mb-2"></i>
+                    <p>info@virtualmart.co.ke</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="copyright_section mt-5">
+        <div class="container text-center">
+            <p class="copyright_text">
+                2025 &copy; All Rights Reserved. Design by Victor Micheni
+            </p>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/plugin.js"></script>
+    <script src="../js/custom.js"></script>
+
+    <!-- contact form logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('contactForm');
+            const msgBox = document.getElementById('formMessage');
+
+            let contacts = JSON.parse(localStorage.getItem('contacts')) || [];
+
+            function saveContact(contact) {
+                contacts.push(contact);
+                localStorage.setItem('contacts', JSON.stringify(contacts));
+            }
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+
+                const name = form.name.value.trim();
+                const email = form.email.value.trim();
+                const subject = form.subject.value.trim();
+                const message = form.message.value.trim();
+
+                if (!name || !email || !subject || !message) {
+                    msgBox.innerText = "Please fill in all fields!";
+                    msgBox.style.color = "red";
+                    return;
+                }
+
+                if (!/^\S+@\S+\.\S+$/.test(email)) {
+                    msgBox.innerText = "Please enter a valid email!";
+                    msgBox.style.color = "red";
+                    return;
+                }
+
+                const contact = {
+                    id: contacts.length + 1,
+                    name,
+                    email,
+                    subject,
+                    message,
+                    dateSubmitted: new Date().toISOString()
+                };
+
+                saveContact(contact);
+
+                msgBox.innerText = "Message sent successfully!";
+                msgBox.style.color = "green";
+                form.reset();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

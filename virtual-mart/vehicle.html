@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vehicle Details</title>
+
+    <!-- Bootstrap + Oberlo Styles -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/mart.css">
+
+    <!-- Font Awesome (use official CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <!-- header section -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent">
+                    <span class=""></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                        <li class="nav-item"><a class="nav-link navbar-brand"
+                                href="../virtual-mart/index.html"><span><span>Virtual</span>Mart</span></a></li>
+                        <li class="nav-item"><a class="nav-link" href="../blog/blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../contact/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header -->
+
+    <!-- vehicle main info section -->
+    <div class="about_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <!-- gallery -->
+                <div class="col-md-6">
+                    <div id="vehicle_gallery" class="carousel slide" data-ride="carousel" data-interval="3000">
+                        <ol class="carousel-indicators" id="vehicleIndicators"></ol>
+                        <div class="carousel-inner" id="vehicleImages">
+                            <!-- JS will inject carousel items -->
+                        </div>
+                        <a class="carousel-control-prev" href="#vehicle_gallery" role="button" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a class="carousel-control-next" href="#vehicle_gallery" role="button" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- details -->
+                <div class="col-md-6">
+                    <h3 class="about_taital" id="vehicleTitle">Loading...</h3>
+                    <p class="about_text" id="vehicleDetails"></p>
+                    <div class="readmore_btn"><a href="#" data-toggle="modal" data-target="#bookingModal"
+                            data-service="Check Availability">Check Availability</a>
+                    </div>
+                    <div class="readmore_btn"><a href="#" data-toggle="modal" data-target="#bookingModal"
+                            data-service="Book Test Drive">Book Test Drive</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main info -->
+
+    <!-- specs and reviews -->
+    <div class="models_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="models_taital">Vehicle Specifications</h1>
+                    <p class="lorem_text" id="vehicleSpecs">Loading specifications...</p>
+
+                    <h1 class="models_taital">Vehicle Reviews</h1>
+                    <p class="lorem_text">User and expert reviews about the vehicle...</p>
+
+                    <h1 class="models_taital">Consumer Report</h1>
+                    <p class="lorem_text">Reliability score, safety data and other report info...</p>
+
+                    <h1 class="models_taital">Pre-Purchase Inspection</h1>
+                    <p class="lorem_text">Inspection checklist and technician comments...</p>
+                    <!-- moved button here -->
+                    <div class="inspection_btn"><a href="#" data-toggle="modal" data-target="#bookingModal"
+                            data-service="Pre-Purchase Inspection">Pre-Purchase Inspection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end specs -->
+
+    <!-- Booking Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Book a Service</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form id="bookingForm">
+                        <input type="text" class="form-control mb-2" placeholder="Name" name="name" required>
+                        <input type="text" class="form-control mb-2" placeholder="Phone Number" name="phone" required>
+                        <input type="email" class="form-control mb-2" placeholder="Email" name="email" required>
+                        <input type="hidden" name="service" id="bookingService">
+                        <textarea class="form-control mb-2" placeholder="Message" name="message" rows="3"></textarea>
+                        <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end booking modal -->
+
+    <!-- footer -->
+    <div class="copyright_section">
+        <div class="container">
+            <p class="copyright_text">
+                2025 &copy; All Rights Reserved. Design by Victor Micheni
+            </p>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get('id'), 10);
+
+            // helpers
+            function normalizePath(src) {
+                if (!src) return '../images/placeholder.png';
+                src = String(src).trim();
+                if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('//')) return src;
+                if (src.startsWith('../') || src.startsWith('/')) return src;
+                if (src.startsWith('images/')) return '../' + src;
+                // assume filename
+                return '../images/' + src;
+            }
+            function escapeHtml(str) {
+                if (str == null) return '';
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#039;');
+            }
+
+            fetch('vehicles.json')
+                .then(res => res.json())
+                .then(data => {
+                    const v = data.find(car => car.id === id);
+                    if (!v) {
+                        document.getElementById('vehicleTitle').textContent = 'Vehicle not found';
+                        return;
+                    }
+
+                    // Title
+                    document.getElementById('vehicleTitle').textContent = v.year + ' ' + v.make + ' ' + v.model;
+
+                    // Details
+                    document.getElementById('vehicleDetails').innerHTML = `
+                        <strong>Make:</strong> ${escapeHtml(v.make)}<br>
+                        <strong>Brand:</strong> ${escapeHtml(v.model)}<br>
+                        <strong>Model Code:</strong> ${escapeHtml(v.modelCode)}<br>
+                        <strong>Year:</strong> ${escapeHtml(v.year)}<br>
+                        <strong>Engine Size:</strong> ${escapeHtml(v.engineSize)}<br>
+                        <strong>Transmission:</strong> ${escapeHtml(v.transmission)}<br>
+                        <strong>Fuel:</strong> ${escapeHtml(v.fuel)}<br>
+                        <strong>Color:</strong> ${escapeHtml(v.color)}<br>
+                        <strong>Price:</strong> $${Number(v.price).toLocaleString()}
+                    `;
+
+                    // Specs placeholder
+                    document.getElementById('vehicleSpecs').textContent = `${v.make} ${v.model} full specifications coming soon.`;
+
+                    // Carousel images
+                    const rawImages = (v.images && v.images.length) ? v.images.slice() : (v.image ? [v.image] : []);
+                    const images = rawImages.length ? rawImages.map(normalizePath) : ['../images/placeholder.png'];
+
+                    const imgContainer = document.getElementById('vehicleImages');
+                    const indicators = document.getElementById('vehicleIndicators');
+
+                    imgContainer.innerHTML = images.map((src, index) => `
+                        <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                            <img src="${src}" class="d-block w-100" alt="${escapeHtml(v.make)}"
+                                onerror="this.onerror=null;this.src='../images/placeholder.png'">
+                        </div>
+                    `).join('');
+
+                    indicators.innerHTML = images.map((_, index) => `
+                        <li data-target="#vehicle_gallery" data-slide-to="${index}"
+                            class="${index === 0 ? 'active' : ''}"></li>
+                    `).join('');
+                });
+
+            // Booking modal service capture
+            $('#bookingModal').on('show.bs.modal', function (event) {
+                const button = $(event.relatedTarget);
+                const service = button.data('service');
+                $('#bookingService').val(service);
+            });
+
+            // Booking form submit
+            document.getElementById('bookingForm').addEventListener('submit', e => {
+                e.preventDefault();
+                alert('Booking submitted!');
+                $('#bookingModal').modal('hide');
+            });
+        });
+    </script>
+</body>
+
+</html>

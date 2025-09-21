@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "make": "Toyota",
+    "brand": "Corolla",
+    "model": "X",
+    "modelCode": "TXY123",
+    "size": "Compact",
+    "year": 2020,
+    "engineSize": "1.8L",
+    "color": "White",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "price": 15000,
+    "dateAdded": "2025-06-01",
+    "images": [
+      "../images/img-1.png",
+      "../images/img-1.png",
+      "../images/img-1.png"
+    ]
+  },
+  {
+    "id": 2,
+    "make": "Honda",
+    "brand": "Civic",
+    "model": "LX",
+    "modelCode": "HCX456",
+    "size": "Sedan",
+    "year": 2021,
+    "engineSize": "2.0L",
+    "color": "Black",
+    "fuel": "Petrol",
+    "transmission": "Manual",
+    "price": 17000,
+    "dateAdded": "2025-06-02",
+    "images": [
+      "../images/img-2.png",
+      "../images/img-2.png",
+      "../images/img-2.png"
+    ]
+  },
+  {
+    "id": 3,
+    "make": "Nissan",
+    "brand": "Altima",
+    "model": "S",
+    "modelCode": "NAS789",
+    "size": "Midsize",
+    "year": 2019,
+    "engineSize": "2.5L",
+    "color": "Blue",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "price": 14000,
+    "dateAdded": "2025-06-03",
+    "images": [
+      "../images/img-3.png",
+      "../images/img-3.png",
+      "../images/img-3.png"
+    ]
+  },
+  {
+    "id": 4,
+    "make": "Ford",
+    "brand": "Focus",
+    "model": "SE",
+    "modelCode": "FFS101",
+    "size": "Compact",
+    "year": 2018,
+    "engineSize": "1.5L",
+    "color": "Red",
+    "fuel": "Diesel",
+    "transmission": "Manual",
+    "price": 12000,
+    "dateAdded": "2025-06-04",
+    "images": [
+      "../images/img-4.png",
+      "../images/img-4.png",
+      "../images/img-4.png"
+    ]
+  },
+  {
+    "id": 5,
+    "make": "BMW",
+    "brand": "3 Series",
+    "model": "320i",
+    "modelCode": "BMW320",
+    "size": "Sedan",
+    "year": 2022,
+    "engineSize": "2.0L",
+    "color": "Silver",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "price": 35000,
+    "dateAdded": "2025-06-05",
+    "images": [
+      "../images/img-5.png",
+      "../images/img-5.png",
+      "../images/img-5.png"
+    ]
+  },
+  {
+    "id": 6,
+    "make": "Mercedes",
+    "brand": "C-Class",
+    "model": "C200",
+    "modelCode": "MCC200",
+    "size": "Sedan",
+    "year": 2023,
+    "engineSize": "2.0L",
+    "color": "Gray",
+    "fuel": "Petrol",
+    "transmission": "Automatic",
+    "price": 40000,
+    "dateAdded": "2025-06-06",
+    "images": [
+      "../images/img-6.png",
+      "../images/img-6.png",
+      "../images/img-6.png"
+    ]
+  }
+]

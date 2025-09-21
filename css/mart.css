@@ -1,0 +1,52 @@
+#resultsGrid .card {
+  transition: transform 0.2s ease;
+}
+#resultsGrid .card:hover {
+  transform: translateY(-5px);
+}
+
+.readmore_btn {
+  width: 170px;
+  float: left;
+  padding-top: 40px;
+  margin: 10px;
+}
+
+.readmore_btn a {
+  width: 100%;
+  float: left;
+  font-size: 18px;
+  color: #fefefd;
+  background-color: #fc9d22;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.readmore_btn a:hover {
+  color: #fefefd;
+  background-color: #474646;
+}
+
+.inspection_btn {
+  width: 100%;
+  float: left;
+  padding-top: 40px;
+  margin: 10px;
+}
+
+.inspection_btn a {
+  width: 100%;
+  float: left;
+  font-size: 18px;
+  color: #fefefd;
+  background-color: #fc9d22;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.inspection_btn a:hover {
+  color: black;
+  background-color: #474646;
+}
