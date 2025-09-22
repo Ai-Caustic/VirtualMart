@@ -17,7 +17,7 @@
   float: left;
   font-size: 18px;
   color: #fefefd;
-  background-color: #fc9d22;
+  background-color: #ff4f5a;
   padding: 10px;
   border-radius: 5px;
   text-align: center;
@@ -40,7 +40,7 @@
   float: left;
   font-size: 18px;
   color: #fefefd;
-  background-color: #fc9d22;
+  background-color: #ff4f5a;
   padding: 10px;
   border-radius: 5px;
   text-align: center;
@@ -49,4 +49,184 @@
 .inspection_btn a:hover {
   color: black;
   background-color: #474646;
+}
+
+/* Search form wrapper */
+.search_wrapper {
+  background: #f9f9f9;
+  padding: 40px 0 20px 0;
+  margin-bottom: 20px;
+  z-index: 2;
+}
+
+.search_card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+#searchForm label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+  font-size: medium;
+}
+
+#searchForm .form-control {
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+#searchForm .form-control::placeholder {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+#searchForm .form-control:focus {
+  border-color: #ff4f5a;
+  box-shadow: 0 0 0 0.2rem rgba(255, 79, 90, 1);
+}
+
+#searchForm button {
+  background: #ff4f5a;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  margin-top: 5%;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#searchForm button:hover {
+  background: #e43c47;
+  transform: scale(1.05);
+}
+
+#sortBy {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: #fff
+    url("data:image/svg+xml;utf8,<svg fill='%23333' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")
+    no-repeat right 12px center;
+  background-size: 16px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 36px 8px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+#sortBy:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Contact Form Styling */
+.contact_form {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.contact_form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.contact_form .form-control {
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 12px 15px;
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact_form .form-control:focus {
+  border-color: #ff4f5a;
+  box-shadow: 0 0 0 0.2rem rgba(255, 79, 90, 1);
+}
+
+.contact_form textarea {
+  resize: none;
+}
+
+.contact_form button.btn-primary {
+  background: #ff4f5a;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 30px;
+  margin-top: 5%;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.contact_form button.btn-primary:hover {
+  background: #e43c47;
+  transform: scale(1.05);
+}
+
+#formMessage {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Contact Info Styling */
+.contact_section .contact-info-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.contact_section .contact-info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.contact_section .contact-info-card i {
+  font-size: 28px;
+  color: #ff4f5a;
+  margin-bottom: 15px;
+}
+
+.contact_section .contact-info-card p {
+  font-size: 15px;
+  color: #555;
+  margin: 0;
+}
+
+/* Contact Section Background */
+.contact_section {
+  background: linear-gradient(135deg, #f9fafc 0%, #f1f3f6 100%);
+  padding: 80px 0;
+  border-radius: 12px;
+}
+
+/* Make sure cards pop against background */
+.contact_section .contact_form,
+.contact_section .contact-info-card {
+  background: #fff;
+}
+
+/* Animation base */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-in-out;
+}
+
+/* When active */
+.fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
 }

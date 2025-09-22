@@ -40,43 +40,49 @@
         </div>
     </header>
 
-    <!-- hero search -->
+    <!-- hero section -->
     <div class="banner_section layout_padding">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-left">
                     <div class="banner_taital_main">
                         <h1 class="banner_taital">Virtual<br> Vehicle Mart</h1>
                         <p class="banner_text">Search from hundreds of vehicles — filter by make, model, year, engine
                             size and more.</p>
-
-                        <form id="searchForm" class="form-row align-items-end mt-4">
-                            <div class="form-group col-md-3">
-                                <label class="small">Make</label>
-                                <input type="text" class="form-control" placeholder="e.g. Toyota" name="make">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label class="small">Model</label>
-                                <input type="text" class="form-control" placeholder="e.g. Corolla" name="model">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label class="small">Year</label>
-                                <input type="number" class="form-control" placeholder="Year" name="year">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label class="small">Engine (cc)</label>
-                                <input type="number" class="form-control" placeholder="e.g. 1800" name="enginesize">
-                            </div>
-                            <div class="form-group col-md-2">
-                                <button type="submit" class="btn btn-primary w-100">Search</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
-
-                <div class="col-md-6 padding_right0">
+                <div class="col-md-6 padding_right0 text-center">
                     <div class="banner_img"><img src="../images/banner-img.png" alt="hero vehicle"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="search_wrapper">
+        <div class="container">
+            <div class="search_card">
+                <form id="searchForm" class="row g-3">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <label class="form-label small">Make</label>
+                        <input type="text" class="form-control" placeholder="e.g. Toyota" name="make">
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <label class="form-label small">Model</label>
+                        <input type="text" class="form-control" placeholder="e.g. Corolla" name="model">
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small">Year</label>
+                        <input type="number" class="form-control" placeholder="Year" name="year">
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <label class="form-label small">Engine (cc)</label>
+                        <input type="number" class="form-control" placeholder="e.g. 1800" name="enginesize">
+                    </div>
+                    <div class="col-12 col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -150,9 +156,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('resultsGrid');
-            const sortBy = document.getElementById('sortBy');
             const form = document.getElementById('searchForm');
-
             let vehicles = [];
 
             function render(list) {
@@ -169,18 +173,12 @@
                     grid.innerHTML += `
         <div class="col-md-4 mb-4">
           <div class="blog_box h-100 d-flex flex-column">
-            
-            <!-- Bootstrap carousel -->
             <div id="${carouselId}" class="carousel slide" data-ride="carousel" data-interval="3000">
-              
-              <!-- indicators -->
               <ol class="carousel-indicators">
                 ${images.map((_, i) => `
                   <li data-target="#${carouselId}" data-slide-to="${i}" ${i === 0 ? 'class="active"' : ''}></li>
                 `).join('')}
               </ol>
-
-              <!-- images -->
               <div class="carousel-inner">
                 ${images.map((img, i) => `
                   <div class="carousel-item ${i === 0 ? 'active' : ''}">
@@ -188,8 +186,6 @@
                   </div>
                 `).join('')}
               </div>
-
-              <!-- controls -->
               ${images.length > 1 ? `
                 <a class="carousel-control-prev" href="#${carouselId}" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -200,7 +196,6 @@
                   <span class="sr-only">Next</span>
                 </a>` : ''}
             </div>
-
             <div class="btn_main">
               <div class="date_text"><a href="#">$${v.price.toLocaleString()}</a></div>
             </div>
@@ -216,11 +211,9 @@
               </a>
             </div>
           </div>
-        </div>
-        `;
+        </div>`;
                 });
             }
-
 
             function applySearch() {
                 const formData = new FormData(form);
@@ -238,11 +231,13 @@
                 render(filtered);
             }
 
-            sortBy.addEventListener('change', () => {
+            // hook into niceSelect change
+            $(document).on('change', '#sortBy', function () {
                 let sorted = [...vehicles];
-                if (sortBy.value === 'price') sorted.sort((a, b) => a.price - b.price);
-                if (sortBy.value === 'date') sorted.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
-                if (sortBy.value === 'year') sorted.sort((a, b) => b.year - a.year);
+                const value = $(this).val();
+                if (value === 'price') sorted.sort((a, b) => a.price - b.price);
+                if (value === 'date') sorted.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                if (value === 'year') sorted.sort((a, b) => b.year - a.year);
                 render(sorted);
             });
 
@@ -259,6 +254,7 @@
                 });
         });
     </script>
+
 
 </body>
 
